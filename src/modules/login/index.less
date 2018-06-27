@@ -1,88 +1,176 @@
 .wrapper {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 50%;
-  background: #DAECFF;
-}
-
-.wrapper::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50%;
-  background: #57ABFF;
+  background: url(../../assets/images/login/beijing.jpg) no-repeat center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: url(http://o6qhdb7kv.bkt.clouddn.com/jc-login-page.jpg) no-repeat center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 475px;
+  background: url(../../assets/images/login/baidi.png) no-repeat center;
   background-size: 100%;
-  z-index: 9;
 }
 
-.login-wrapper {
-  position: fixed;
-  top: 50%;
-  right: 12%;
-  z-index: 999;
-  margin-top: -260px;
+.img-qiu {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
 }
 
 .bottom-img {
   position: absolute;
-  bottom: -30px;
-  left: -40px;
-  z-index: -1;
-  width: 125%;
+  left: -25%;
+  bottom: -17px;
+  width: 150%;
+  height: 18px;
+  background: #D5D0BC;
+}
+
+.trapezoid {
+  position: absolute;
+  left: -25%;
+  bottom: -167px;
+  width: 150%;
+  height: 150px;
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding-top: 50px;
+}
+
+.space {
+  display: inline-block;
+  width: 20px;
+}
+
+.trapezoid::before,
+.trapezoid::after {
+  position: absolute;
+  top: 10px;
+  content: '';
+  width: 200px;
+  height: 500px;
+  background: #3AA9F0;
+}
+
+.trapezoid::before {
+  left: -65px;
+  transform: rotate(-30deg);
+}
+
+.trapezoid::after {
+  right: -65px;
+  transform: rotate(30deg);
+}
+
+.bottom-img::before {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  content: '';
+  width: 325px;
+  height: 210px;
+  background: url(../../assets/images/login/waimai.png) no-repeat center;
+  background-size: 100%;
+}
+
+.bottom-img::after {
+  position: absolute;
+  bottom: 15px;
+  right: 40px;
+  content: '';
+  width: 295px;
+  height: 120px;
+  background: url(../../assets/images/login/wuliu.png) no-repeat center;
+  background-size: 100%;
+}
+
+/* logo-title-wrap */
+
+.logo-title-wrap {
+  height: 100px;
+  padding-top: 30px;
+}
+
+.logo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+.title {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: PingFangSC-Semibold;
+  font-size: 24px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* login-flex-wrap */
+
+.login-flex-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.img-dianshang {
+  width: 300px;
+  height: 300px;
+  margin: 0 100px;
 }
 
 /* user-login-wrap */
 
 .user-login-wrap {
-  width: 367px;
-  height: 454px;
-  background: #FFF;
-  border: 1px solid #FFF;
-  border-radius: 8px;
-  padding: 30px;
+  width: 300px;
 }
 
-.logo {
-  display: block;
-  width: 69px;
-  height: 69px;
-  margin: 10px auto 16px;
-}
-
-.title {
+.radio-wrap {
   width: 100%;
-  margin-bottom: 35px;
-  font-family: PingFangSC-Semibold;
-  font-size: 24px;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.85);
   text-align: center;
+}
+
+.radio-wrap label:first-child {
+  position: relative;
+  padding-right: 8px;
+  margin-right: 15px;
+}
+
+.radio-wrap label:first-child::after {
+  position: absolute;
+  right: 0;
+  top: 0.35em;
+  content: '';
+  width: 1px;
+  height: 0.8em;
+  background: #D9D9D9;
+}
+
+.radio-wrap label span:first-child {
+  vertical-align: sub;
 }
 
 .input-row {
   position: relative;
   width: 100%;
   height: 42px;
-  background: #FFF;
-  border: 1px solid #D9D9D9;
-  border-radius: 4px;
-  margin-top: 24px;
+  background: #F2F2F2;
+  border-radius: 25px;
+  margin-top: 25px;
   overflow: hidden;
 }
 
@@ -92,20 +180,19 @@
   left: 0;
   z-index: 99;
   height: 100%;
-  background: #FFF;
 }
 
 .input-row .icon img {
   width: 17px;
   height: 20px;
-  margin: 10px 15px;
+  margin: 10px 20px;
 }
 
 .input-row .input {
   width: 100%;
   height: 100%;
   line-height: 100%;
-  padding-left: 60px;
+  padding-left: 50px;
   background: #F5F5F5;
   font-size: 14px;
   outline: none;
@@ -114,25 +201,18 @@
 
 .rember-password {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .btn-login {
   margin-top: 20px;
   width: 100%;
   height: 40px;
-  background: #2D8CF0;
-  border-radius: 4px;
+  border-radius: 25px;
   border: 0;
   color: #FFF;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.btn-login:hover,
-.btn-login:focus,
-.btn-login:active {
-  background: #1C6AC9;
-  color: #FFF;
 }

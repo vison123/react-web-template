@@ -11,12 +11,13 @@ export const LOGIN = 'spa/login'
 // ===========================> Actions <=========================== //
 
 export const userLoginAct = arg => dispatch => {
-  fetchData(dispatch, api.login, arg)
+  return fetchData(dispatch, api.login, arg)
     .then(res => {
       if (res.code !== 0) {
         message.error(res.errmsg)
       } else {
         dispatch(createAction(LOGIN)(res.data))
+        return res
       }
     })
 }

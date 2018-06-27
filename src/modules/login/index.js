@@ -4,14 +4,17 @@ import { Input, Button, message, Checkbox } from 'antd'
 import loginName from 'images/login/user.png'
 import passWord from 'images/login/password.png'
 import logo from 'images/login/logo.png'
-import bottomImg from 'images/login/bottom.jpg'
+import qiu from 'images/login/qiu.png'
+import dianshang from 'images/login/dianshang.png'
 import style from './index.less'
 import { userLoginAct } from './reduck'
 import storage from '../../utils/storage'
+import * as urls from '../../global/routepath'
 
 class Login extends Component {
   state = {
-    email: '',
+    loginType: 2,
+    userName: '',
     password: ''
   }
 
@@ -26,13 +29,18 @@ class Login extends Component {
     let userInfo = next.userInfo
     if (userInfo.accessToken) {
       storage.set('user', userInfo)
-      this.props.history.replace('/')
-      location.reload()
+      storage.set('currentShop', userInfo.shopInfo[0])
+      storage.set('isMerchant', this.state.loginType === 1)
+      if (this.state.loginType === 1) {
+        this.props.history.replace(urls.HOME)
+      } else {
+        this.props.history.replace('/')
+      }
     }
   }
 
-  getEmail = e => {
-    this.setState({ email: e.target.value })
+  getUerName = e => {
+    this.setState({ userName: e.target.value })
   }
 
   getPwd = e => {
@@ -40,9 +48,9 @@ class Login extends Component {
   }
 
   login = () => {
-    let email = this.state.email
+    let userName = this.state.userName
     let password = this.state.password
-    if (email === '') {
+    if (userName === '') {
       message.error('请输入账号')
       return
     }
@@ -52,66 +60,45 @@ class Login extends Component {
       return
     }
 
-    this.props.dispatch(
-      userLoginAct({
-        name: email,
-        password: password,
-        assessToken: ''
-      })
-    )
+    this.props.dispatch(userLoginAct({ userName, password }))
   }
 
   render() {
     return (
       <div className={style['wrapper']}>
         <div className={style['wrap']}>
-          <div className={style['login-wrapper']}>
+          <img className={style['img-qiu']} src={qiu} />
+          <div className={style['logo-title-wrap']}>
+            <img className={style['logo']} src={logo} />
+            <div className={style['title']}>管理后台模版</div>
+          </div>
+          <div className={style['login-flex-wrap']}>
+            <img className={style['img-dianshang']} src={dianshang} />
             <div className={style['user-login-wrap']}>
-              <img
-                className={style['logo']}
-                src={logo}
-              />
-              <div className={style['title']}>管理系统</div>
               <div className={style['input-row']}>
                 <div className={style['icon']}>
                   <img src={loginName} />
                 </div>
-                <Input
-                  type='text'
-                  className={style['input']}
-                  placeholder='请输入Email账号前缀'
-                  onChange={this.getEmail}
-                />
+                <Input type='text' className={style['input']} onChange={this.getUerName} />
               </div>
               <div className={style['input-row']}>
                 <div className={style['icon']}>
                   <img src={passWord} />
                 </div>
-                <Input
-                  type='password'
-                  className={style['input']}
-                  placeholder='请输入密码'
-                  onChange={this.getPwd}
-                />
+                <Input type='password' className={style['input']} onChange={this.getPwd} />
               </div>
               <Checkbox className={style['rember-password']}>记住密码</Checkbox>
-              <Button
-                className={style['btn-login']}
-                onClick={this.login}
-              >
+              <Button type='primary' className={style['btn-login']} onClick={this.login}>
                 登&nbsp;&nbsp;录
               </Button>
             </div>
-            <img
-              className={style['bottom-img']}
-              src={bottomImg}
-            />
           </div>
+          <div className={style['bottom-img']} />
+          <div className={style['trapezoid']} />
         </div>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => {
