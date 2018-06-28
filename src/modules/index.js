@@ -94,7 +94,7 @@ class MainLayout extends Component {
             links={[]}
             copyright={
               <div>
-                Copyright <Icon type='copyright' /> 2017 金诚集团
+                Copyright <Icon type='copyright' /> 2017
               </div>
             }
           />
