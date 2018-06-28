@@ -104,7 +104,7 @@ class MainLayout extends Component {
             <div className={style.cover}>
               <Spin
                 tip={showSpin.content}
-                style={{ marginTop: 160, marginLeft: -160 }}
+                className={style.spin}
                 size='large'
               />
             </div>
