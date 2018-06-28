@@ -21,21 +21,7 @@ class Login extends Component {
   componentWillMount() {
     const userInfo = storage.get('user')
     if (userInfo && userInfo.accessToken) {
-      this.props.history.replace('/')
-    }
-  }
-
-  componentWillReceiveProps(next) {
-    let userInfo = next.userInfo
-    if (userInfo.accessToken) {
-      storage.set('user', userInfo)
-      storage.set('currentShop', userInfo.shopInfo[0])
-      storage.set('isMerchant', this.state.loginType === 1)
-      if (this.state.loginType === 1) {
-        this.props.history.replace(urls.HOME)
-      } else {
-        this.props.history.replace('/')
-      }
+      this.props.history.replace(urls.HOME)
     }
   }
 
@@ -61,6 +47,11 @@ class Login extends Component {
     }
 
     this.props.dispatch(userLoginAct({ userName, password }))
+      .then(res => {
+        if (res && res.code === 0) {
+          this.props.history.replace(urls.HOME)
+        }
+      })
   }
 
   render() {

@@ -22,6 +22,9 @@ import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
 
 const middlewares = [thunkMiddleware, promiseMiddleware]
+if (process.env.NODE_ENV === 'development') {
+  require('../mock')
+}
 
 if (process.env.NODE_ENV === `development`) {
   const logger = createLogger()
