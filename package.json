@@ -155,7 +155,6 @@
     "lint"
   ],
   "theme": {
-    "primary-color": "#FD5729",
-    "table-header-bg": "#FEEFEC"
+    "primary-color": "#1890ff"
   }
 }

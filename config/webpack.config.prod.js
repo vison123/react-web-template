@@ -14,6 +14,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const SwRegisterWebpackPlugin = require('sw-register-webpack-plugin');
+const theme = require('../package.json').theme
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -286,7 +287,12 @@ const config = {
                     ],
                   },
                 },
-                require.resolve('less-loader'),
+                {
+                  loader: require.resolve('less-loader'),
+                  options: {
+                    modifyVars: theme
+                  }
+                }
               ],
             },
             extractTextPluginOptions

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'antd'
 import { JcContent } from '../../components/styleComponents'
 
 class Home extends React.Component {
@@ -7,6 +8,7 @@ class Home extends React.Component {
     return (
       <JcContent>
         首页
+        <Button>首页</Button>
       </JcContent>
     )
   }

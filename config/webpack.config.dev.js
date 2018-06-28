@@ -12,6 +12,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const theme = require('../package.json').theme
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -187,7 +188,7 @@ module.exports = {
           // directory for faster rebuilds.
           cacheDirectory: true,
           plugins: [
-            ['import', [{ libraryName: 'antd', style: 'css' }]],
+            ['import', [{ libraryName: 'antd', style: true }]],
           ],
         },
       },
@@ -231,13 +232,16 @@ module.exports = {
       },
       {
         test: /\.less/,
+        include: [
+          path.resolve(__dirname, '..', 'node_modules', 'antd')
+        ],
         use: [
           require.resolve('style-loader'),
           {
             loader: require.resolve('css-loader'),
             options: {
               sourceMap: true,
-              modules: true,
+              // modules: true,
               localIdentName: '[name]_[local]_[hash:base64:8]',
               importLoaders: 2,
             },
@@ -260,9 +264,56 @@ module.exports = {
               ],
             },
           },
-          require.resolve('less-loader'),
+          {
+            loader: require.resolve('less-loader'),
+            options: {
+              modifyVars: theme
+            }
+          }
         ],
       },
+      {
+        test: /\.less/,
+        exclude: [
+          path.resolve(__dirname, '..', 'node_modules', 'antd')
+        ],
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[name]_[local]_[hash:base64:8]',
+              importLoaders: 2
+            }
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          },
+          {
+            loader: require.resolve('less-loader'),
+            options: {
+              modifyVars: theme
+            }
+          }
+        ]
+      }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],
