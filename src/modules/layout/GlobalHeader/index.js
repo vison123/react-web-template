@@ -103,7 +103,7 @@ export default class GlobalHeader extends PureComponent {
           onClick={this.toggle}
         />
         <div className={styles.right}>
-          {currentUser && currentUser.name ? (
+          {currentUser && currentUser.userName ? (
             <Dropdown overlay={menu}>
               <span className={`${styles.action} ${styles.account}`}>
                 <Avatar
@@ -111,7 +111,7 @@ export default class GlobalHeader extends PureComponent {
                   className={styles.avatar}
                   src={currentUser.avatar}
                 />
-                <span className={styles.name}>{currentUser.name}</span>
+                <span className={styles.name}>{currentUser.userName}</span>
               </span>
             </Dropdown>
           ) : <Spin

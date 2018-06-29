@@ -191,6 +191,7 @@ const config = {
           compact: true,
           plugins: [
             ['import', [{ libraryName: 'antd', style: 'css' }]],
+            'transform-decorators-legacy',
           ],
         },
       },

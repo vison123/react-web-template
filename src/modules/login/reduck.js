@@ -17,7 +17,7 @@ export const userLoginAct = arg => dispatch => {
         message.error(res.errmsg)
       } else {
         dispatch(createAction(LOGIN)(res.data))
-        storage.set('userInfo', res.data)
+        storage.set('user', res.data)
         return res
       }
     })
@@ -37,7 +37,10 @@ export const userLogout = arg => dispatch => {
 
 // ===========================> Reducer <=========================== //
 
-let initState = {}
+let initState = {
+  userName: 'weisen',
+  accessToken: '39df22f6fc6440adad29035aaf631d29'
+}
 
 export const userLogin = (state = initState, action) => {
   switch (action.type) {

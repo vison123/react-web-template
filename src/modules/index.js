@@ -11,13 +11,11 @@ import GlobalHeader from './layout/GlobalHeader'
 import logo from '../assets/images/logo.png'
 import SiderMenu from '../components/SiderMenu'
 import { getMenuData } from '../global/menu'
-import moment from 'moment'
+import * as urls from '../global/routepath'
 
 class MainLayout extends Component {
   constructor(props) {
     super(props)
-    this.orderTimeFrom = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
-    this.orderTimeTo = moment(Date.parse(new Date()) + 5 * 60 * 1000).format('YYYY-MM-DD HH:mm:ss')
     this.state = {
       collapsed: false,
       dealDialogVisible: false,
@@ -116,6 +114,7 @@ class MainLayout extends Component {
 
   logout = () => {
     storage.clear()
+    this.props.match.history.push(urls.HOME)
   }
 }
 
