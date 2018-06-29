@@ -15,6 +15,7 @@ process.on('unhandledRejection', err => {
 require('../config/env');
 
 const path = require('path');
+const moment = require('moment');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
@@ -67,7 +68,8 @@ measureFileSizesBeforeBuild(paths.appBuild)
             ' to the line before.\n'
         );
       } else {
-        console.log(chalk.green('Compiled successfully.\n'));
+        const buildTime = moment.duration(stats.endTime - stats.startTime).asSeconds()
+        console.log(chalk.green('Compiled successfully. 共耗时' + buildTime + '\n'));
       }
 
       console.log('File sizes after gzip:\n');
