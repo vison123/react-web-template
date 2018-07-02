@@ -14,7 +14,6 @@ const formItemLayout = {
 }
 
 class TableFilter extends Component {
-
   _renderInput = formItem => {
     const { getFieldDecorator } = this.props.form
     return (

@@ -16,7 +16,6 @@ const defaultLocale = {
 }
 
 export default class Upload extends React.Component {
-
   static defaultProps = {
     prefixCls: 'ant-upload',
     type: 'select',

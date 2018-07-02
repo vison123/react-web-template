@@ -11,7 +11,6 @@ const FormItem = Form.Item
 const TreeNode = TreeSelect.TreeNode
 
 class JcFilter extends Component {
-
   _renderInput = formItem => {
     const { getFieldDecorator } = this.props.form
     return getFieldDecorator(formItem.fieldName, {
@@ -23,7 +22,7 @@ class JcFilter extends Component {
         placeholder={'请输入' + formItem.label}
         autoComplete={'off'}
       />
-      )
+    )
   }
 
   _filterOption = (input, option) => {

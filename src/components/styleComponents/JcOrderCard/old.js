@@ -37,7 +37,6 @@ const GoodsInfo = function(props) {
 }
 
 class CardList extends Component {
-
   _renderButtons = buttons => {
     return (
       <Form.Item className={style['btn-container']}>

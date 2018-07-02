@@ -75,6 +75,6 @@ ReactDOM.render(
       </Router>
     </Provider>
   </LocaleProvider>,
-	document.getElementById('root')
+  document.getElementById('root')
 )
 registerServiceWorker()

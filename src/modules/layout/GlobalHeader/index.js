@@ -8,7 +8,6 @@ import styles from './index.less'
 const { Header } = Layout
 
 export default class GlobalHeader extends PureComponent {
-
   getNoticeData() {
     const { notices = [] } = this.props
     if (notices.length === 0) {

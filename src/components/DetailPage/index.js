@@ -24,7 +24,6 @@ const formItemLayoutLarge = {
 }
 
 class DetailPage extends Component {
-
   _renderInput = formItem => {
     const { getFieldDecorator } = this.props.form
     return (

@@ -63,18 +63,18 @@ class JcOrderCard extends React.Component {
                 <div className='jc-order-card-show-more' onClick={this.handleExpandChange}>
                   {
                     !expand
-                    ? (
-                      <span>
-                        <span>展开更多</span>
-                        <Icon type='down' />
-                      </span>
-                    )
-                    : (
-                      <span>
-                        <span>收起全部</span>
-                        <Icon type='up' />
-                      </span>
-                    )
+                      ? (
+                        <span>
+                          <span>展开更多</span>
+                          <Icon type='down' />
+                        </span>
+                      )
+                      : (
+                        <span>
+                          <span>收起全部</span>
+                          <Icon type='up' />
+                        </span>
+                      )
                   }
                 </div>}
             </Col>

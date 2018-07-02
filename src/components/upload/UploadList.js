@@ -12,7 +12,7 @@ const previewFile = (file, callback) => {
 
 export default class UploadList extends React.Component {
   static defaultProps = {
-    listType: 'text',  // or picture
+    listType: 'text', // or picture
     progressAttr: {
       strokeWidth: 2,
       showInfo: false,
@@ -52,11 +52,11 @@ export default class UploadList extends React.Component {
       }
       /*eslint-disable */
       file.thumbUrl = ''
-      /*eslint-enable */
+      /* eslint-enable */
       previewFile(file.originFileObj, (previewDataUrl) => {
         /*eslint-disable */
         file.thumbUrl = previewDataUrl
-        /*eslint-enable */
+        /* eslint-enable */
         this.forceUpdate()
       })
     })
